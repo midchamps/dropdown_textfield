@@ -461,7 +461,7 @@ class _DropDownTextFieldState extends State<DropDownTextField>
 
       _listTileTextStyle = (widget.listTitleTextStyle ??
           Theme.of(context).textTheme.titleMedium)!;
-      _listTileTextStyle = (widget.listSubTitleTextStyle ??
+      _listSubTileTextStyle = (widget.listSubTitleTextStyle ??
           Theme.of(context).textTheme.titleSmall)!;
       _listTileHeight =
           _textWidgetSize("dummy Text", _listTileTextStyle).height +
