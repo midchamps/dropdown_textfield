@@ -6,30 +6,15 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 
 class IconProperty {
+  const IconProperty({this.icon, this.color, this.size});
+
   final IconData? icon;
   final Color? color;
   final double? size;
-  IconProperty({this.icon, this.color, this.size});
 }
 
 class CheckBoxProperty {
-  final MouseCursor? mouseCursor;
-  final Color? activeColor;
-  final MaterialStateProperty<Color?>? fillColor;
-  final Color? checkColor;
-  final bool tristate;
-  final MaterialTapTargetSize? materialTapTargetSize;
-  final VisualDensity? visualDensity;
-  final Color? focusColor;
-  final Color? hoverColor;
-  final MaterialStateProperty<Color?>? overlayColor;
-  final double? splashRadius;
-  final FocusNode? focusNode;
-  final bool autofocus;
-  final OutlinedBorder? shape;
-  final BorderSide? side;
-  static const double width = 18.0;
-  CheckBoxProperty({
+  const CheckBoxProperty({
     this.tristate = false,
     this.mouseCursor,
     this.activeColor,
@@ -46,39 +31,58 @@ class CheckBoxProperty {
     this.shape,
     this.side,
   });
+
+  final MouseCursor? mouseCursor;
+  final Color? activeColor;
+  final MaterialStateProperty<Color?>? fillColor;
+  final Color? checkColor;
+  final bool tristate;
+  final MaterialTapTargetSize? materialTapTargetSize;
+  final VisualDensity? visualDensity;
+  final Color? focusColor;
+  final Color? hoverColor;
+  final MaterialStateProperty<Color?>? overlayColor;
+  final double? splashRadius;
+  final FocusNode? focusNode;
+  final bool autofocus;
+  final OutlinedBorder? shape;
+  final BorderSide? side;
+  static const double width = 18.0;
 }
 
 class DropDownTextField extends StatefulWidget {
-  const DropDownTextField(
-      {Key? key,
-      this.controller,
-      this.initialValue,
-      required this.dropDownList,
-      this.padding,
-      this.textStyle,
-      this.onChanged,
-      this.validator,
-      this.isEnabled = true,
-      this.enableSearch = false,
-      this.readOnly = true,
-      this.dropdownRadius = 12,
-      this.textFieldDecoration,
-      this.dropDownIconProperty,
-      this.dropDownItemCount = 6,
-      this.searchFocusNode,
-      this.textFieldFocusNode,
-      this.searchAutofocus = false,
-      this.searchDecoration,
-      this.searchShowCursor,
-      this.searchKeyboardType,
-      this.listSpace = 0,
-      this.clearOption = true,
-      this.clearIconProperty,
-      this.listPadding,
-      this.listTextStyle,
-      this.keyboardType,
-      this.autovalidateMode})
-      : assert(
+  const DropDownTextField({
+    Key? key,
+    this.controller,
+    this.initialValue,
+    required this.dropDownList,
+    this.padding,
+    this.textStyle,
+    this.onChanged,
+    this.validator,
+    this.isEnabled = true,
+    this.enableSearch = false,
+    this.readOnly = true,
+    this.dropdownRadius = 12,
+    this.textFieldDecoration,
+    this.dropDownIconProperty,
+    this.dropDownItemCount = 6,
+    this.searchFocusNode,
+    this.textFieldFocusNode,
+    this.searchAutofocus = false,
+    this.searchDecoration,
+    this.searchShowCursor,
+    this.searchKeyboardType,
+    this.listSpace = 0,
+    this.clearOption = true,
+    this.clearIconProperty,
+    this.listPadding,
+    this.listTitleTextStyle,
+    this.listSubTitleTextStyle,
+    this.keyboardType,
+    this.autovalidateMode,
+    this.clip = Clip.hardEdge,
+  })  : assert(
           !(initialValue != null && controller != null),
           "you cannot add both initialValue and singleController,\nset initial value using controller \n\tEg: SingleValueDropDownController(data:initial value) ",
         ),
@@ -98,34 +102,37 @@ class DropDownTextField extends StatefulWidget {
         submitButtonText = null,
         submitButtonTextStyle = null,
         super(key: key);
-  const DropDownTextField.multiSelection(
-      {Key? key,
-      this.controller,
-      this.displayCompleteItem = false,
-      this.initialValue,
-      required this.dropDownList,
-      this.padding,
-      this.textStyle,
-      this.onChanged,
-      this.validator,
-      this.isEnabled = true,
-      this.dropdownRadius = 12,
-      this.dropDownIconProperty,
-      this.textFieldDecoration,
-      this.dropDownItemCount = 6,
-      this.searchFocusNode,
-      this.textFieldFocusNode,
-      this.listSpace = 0,
-      this.clearOption = true,
-      this.clearIconProperty,
-      this.submitButtonColor,
-      this.submitButtonText,
-      this.submitButtonTextStyle,
-      this.listPadding,
-      this.listTextStyle,
-      this.checkBoxProperty,
-      this.autovalidateMode})
-      : assert(initialValue == null || controller == null,
+
+  const DropDownTextField.multiSelection({
+    Key? key,
+    this.controller,
+    this.displayCompleteItem = false,
+    this.initialValue,
+    required this.dropDownList,
+    this.padding,
+    this.textStyle,
+    this.onChanged,
+    this.validator,
+    this.isEnabled = true,
+    this.dropdownRadius = 12,
+    this.dropDownIconProperty,
+    this.textFieldDecoration,
+    this.dropDownItemCount = 6,
+    this.searchFocusNode,
+    this.textFieldFocusNode,
+    this.listSpace = 0,
+    this.clearOption = true,
+    this.clearIconProperty,
+    this.submitButtonColor,
+    this.submitButtonText,
+    this.submitButtonTextStyle,
+    this.listPadding,
+    this.listTitleTextStyle,
+    this.listSubTitleTextStyle,
+    this.checkBoxProperty,
+    this.autovalidateMode,
+    this.clip = Clip.hardEdge,
+  })  : assert(initialValue == null || controller == null,
             "you cannot add both initialValue and multiController\nset initial value using controller\n\tMultiValueDropDownController(data:initial value)"),
         assert(
           !(controller != null &&
@@ -235,14 +242,20 @@ class DropDownTextField extends StatefulWidget {
   ///multi dropdown submit button text style
   final TextStyle? submitButtonTextStyle;
 
-  ///dropdown list item text style
-  final TextStyle? listTextStyle;
+  ///dropdown list item title text style
+  final TextStyle? listTitleTextStyle;
+
+  ///dropdown list item sub title text style
+  final TextStyle? listSubTitleTextStyle;
 
   final TextInputType? keyboardType;
   final AutovalidateMode? autovalidateMode;
 
   ///customize checkbox property
   final CheckBoxProperty? checkBoxProperty;
+
+  /// Rect clip property
+  final Clip clip;
 
   @override
   _DropDownTextFieldState createState() => _DropDownTextFieldState();
@@ -280,7 +293,9 @@ class _DropDownTextFieldState extends State<DropDownTextField>
   late double _listTileHeight;
   late double _keyboardHeight;
   late TextStyle _listTileTextStyle;
+  late TextStyle _listSubTileTextStyle;
   late ListPadding _listPadding;
+
   @override
   void initState() {
     _cnt = TextEditingController();
@@ -314,7 +329,7 @@ class _DropDownTextFieldState extends State<DropDownTextField>
         _isExpanded = !_isExpanded;
         hideOverlay();
         if (!widget.readOnly &&
-            widget.singleController?.dropDownValue?.name != _cnt.text) {
+            widget.singleController?.dropDownValue?.title != _cnt.text) {
           setState(() {
             _cnt.clear();
           });
@@ -332,7 +347,7 @@ class _DropDownTextFieldState extends State<DropDownTextField>
       if (widget.isMultiSelection) {
         for (int i = 0; i < widget.initialValue.length; i++) {
           var index = _dropDownList.indexWhere((element) =>
-              element.name.trim() == widget.initialValue[i].trim());
+              element.title.trim() == widget.initialValue[i].trim());
           if (index != -1) {
             _multiSelectionValue[index] = true;
           }
@@ -347,7 +362,7 @@ class _DropDownTextFieldState extends State<DropDownTextField>
                 : "$count item selected");
       } else {
         var index = _dropDownList.indexWhere(
-            (element) => element.name.trim() == widget.initialValue.trim());
+            (element) => element.title.trim() == widget.initialValue.trim());
 
         if (index != -1) {
           _cnt.text = widget.initialValue;
@@ -437,15 +452,17 @@ class _DropDownTextFieldState extends State<DropDownTextField>
       } else {
         if (widget.singleController != null) {
           if (widget.singleController!.dropDownValue != null) {
-            _cnt.text = widget.singleController!.dropDownValue!.name;
+            _cnt.text = widget.singleController!.dropDownValue!.title;
           } else {
             _cnt.clear();
           }
         }
       }
 
-      _listTileTextStyle =
-          (widget.listTextStyle ?? Theme.of(context).textTheme.subtitle1)!;
+      _listTileTextStyle = (widget.listTitleTextStyle ??
+          Theme.of(context).textTheme.titleMedium)!;
+      _listTileTextStyle = (widget.listSubTitleTextStyle ??
+          Theme.of(context).textTheme.titleSmall)!;
       _listTileHeight =
           _textWidgetSize("dummy Text", _listTileTextStyle).height +
               _listPadding.top +
@@ -477,7 +494,7 @@ class _DropDownTextFieldState extends State<DropDownTextField>
     super.dispose();
   }
 
-  clearFun() {
+  void clearFun() {
     if (_isExpanded) {
       _isExpanded = !_isExpanded;
       hideOverlay();
@@ -665,7 +682,7 @@ class _DropDownTextFieldState extends State<DropDownTextField>
                 builder: buildOverlay,
               ))),
     );
-    overlay?.insert(_isScrollPadding ? _entry2! : _entry!);
+    overlay.insert(_isScrollPadding ? _entry2! : _entry!);
   }
 
   _openOutSideClickOverlay(BuildContext context) {
@@ -683,7 +700,7 @@ class _DropDownTextFieldState extends State<DropDownTextField>
         ),
       );
     });
-    overlay2?.insert(_barrierOverlay!);
+    overlay2.insert(_barrierOverlay!);
   }
 
   void hideOverlay() {
@@ -743,6 +760,7 @@ class _DropDownTextFieldState extends State<DropDownTextField>
 
   Widget buildOverlay(context, child) {
     return ClipRect(
+      clipBehavior: widget.clip,
       child: Align(
         heightFactor: _heightFactor.value,
         child: Material(
@@ -771,7 +789,8 @@ class _DropDownTextFieldState extends State<DropDownTextField>
                       height: _height,
                       listTileHeight: _listTileHeight,
                       dropDownList: _dropDownList,
-                      listTextStyle: _listTileTextStyle,
+                      listTitleStyle: _listTileTextStyle,
+                      listSubTitleStyle: _listSubTileTextStyle,
                       onChanged: (item) {
                         setState(() {
                           _cnt.text = item.name;
@@ -827,7 +846,7 @@ class _DropDownTextFieldState extends State<DropDownTextField>
                         for (int i = 0; i < _multiSelectionValue.length; i++) {
                           if (_multiSelectionValue[i]) {
                             result.add(_dropDownList[i]);
-                            completeList.add(_dropDownList[i].name);
+                            completeList.add(_dropDownList[i].title);
                           }
                         }
                         int count = _multiSelectionValue
@@ -863,28 +882,30 @@ class _DropDownTextFieldState extends State<DropDownTextField>
 }
 
 class SingleSelection extends StatefulWidget {
-  const SingleSelection(
-      {Key? key,
-      required this.dropDownList,
-      required this.onChanged,
-      required this.height,
-      required this.enableSearch,
-      required this.searchHeight,
-      required this.searchFocusNode,
-      required this.mainFocusNode,
-      this.searchKeyboardType,
-      required this.searchAutofocus,
-      this.searchShowCursor,
-      required this.mainController,
-      required this.autoSort,
-      required this.listTileHeight,
-      this.onSearchTap,
-      this.onSearchSubmit,
-      this.listTextStyle,
-      this.searchDecoration,
-      required this.listPadding,
-      this.clearIconProperty})
-      : super(key: key);
+  const SingleSelection({
+    Key? key,
+    required this.dropDownList,
+    required this.onChanged,
+    required this.height,
+    required this.enableSearch,
+    required this.searchHeight,
+    required this.searchFocusNode,
+    required this.mainFocusNode,
+    this.searchKeyboardType,
+    required this.searchAutofocus,
+    this.searchShowCursor,
+    required this.mainController,
+    required this.autoSort,
+    required this.listTileHeight,
+    this.onSearchTap,
+    this.onSearchSubmit,
+    this.listTitleStyle,
+    this.listSubTitleStyle,
+    this.searchDecoration,
+    required this.listPadding,
+    this.clearIconProperty,
+  }) : super(key: key);
+
   final List<DropDownValueModel> dropDownList;
   final ValueSetter onChanged;
   final double height;
@@ -900,7 +921,8 @@ class SingleSelection extends StatefulWidget {
   final bool autoSort;
   final Function? onSearchTap;
   final Function? onSearchSubmit;
-  final TextStyle? listTextStyle;
+  final TextStyle? listTitleStyle;
+  final TextStyle? listSubTitleStyle;
   final ListPadding listPadding;
   final InputDecoration? searchDecoration;
   final IconProperty? clearIconProperty;
@@ -920,8 +942,8 @@ class _SingleSelectionState extends State<SingleSelection> {
         newDropDownList = List.from(widget.dropDownList);
       } else {
         newDropDownList = widget.dropDownList
-            .where(
-                (item) => item.name.toLowerCase().contains(value.toLowerCase()))
+            .where((item) =>
+                item.title.toLowerCase().contains(value.toLowerCase()))
             .toList();
       }
     });
@@ -1010,6 +1032,7 @@ class _SingleSelectionState extends State<SingleSelection> {
               padding: EdgeInsets.zero,
               itemCount: newDropDownList.length,
               itemBuilder: (BuildContext context, int index) {
+                final item = newDropDownList[index];
                 return InkWell(
                   onTap: () {
                     widget.onChanged(newDropDownList[index]);
@@ -1025,8 +1048,18 @@ class _SingleSelectionState extends State<SingleSelection> {
                       alignment: Alignment.centerLeft,
                       child: FittedBox(
                         fit: BoxFit.fitHeight,
-                        child: Text(newDropDownList[index].name,
-                            style: widget.listTextStyle),
+                        // child: Text(
+                        //   style: widget.listTextStyle,
+                        // ),
+                        child: ListTile(
+                          title: Text(item.title, style: widget.listTitleStyle),
+                          subtitle: item.subTitle != null
+                              ? Text(
+                                  item.subTitle!,
+                                  style: widget.listSubTitleStyle,
+                                )
+                              : null,
+                        ),
                       ),
                     ),
                   ),
@@ -1109,7 +1142,7 @@ class _MultiSelectionState extends State<MultiSelection> {
                                   children: [
                                     Expanded(
                                       child: Text(
-                                          widget.dropDownList[index].name,
+                                          widget.dropDownList[index].title,
                                           style: widget.listTextStyle),
                                     ),
                                     if (widget.dropDownList[index].toolTipMsg !=
@@ -1196,29 +1229,37 @@ class _MultiSelectionState extends State<MultiSelection> {
 }
 
 class DropDownValueModel extends Equatable {
-  final String name;
+  final String title;
+  final String? subTitle;
   final dynamic value;
 
-  ///as of now only added for multiselection dropdown
+  ///as of now only added for multi selection dropdown
   final String? toolTipMsg;
 
-  const DropDownValueModel(
-      {required this.name, required this.value, this.toolTipMsg});
+  const DropDownValueModel({
+    required this.title,
+    this.subTitle,
+    required this.value,
+    this.toolTipMsg,
+  });
 
   factory DropDownValueModel.fromJson(Map<String, dynamic> json) =>
       DropDownValueModel(
-        name: json["name"],
+        title: json["name"],
+        subTitle: json["subTitle"],
         value: json["value"],
         toolTipMsg: json["toolTipMsg"],
       );
 
   Map<String, dynamic> toJson() => {
-        "name": name,
+        "name": title,
+        "subTitle": subTitle,
         "value": value,
         "toolTipMsg": toolTipMsg,
       };
+
   @override
-  List<Object> get props => [name, value];
+  List<Object> get props => [title, value];
 }
 
 class SingleValueDropDownController extends ChangeNotifier {

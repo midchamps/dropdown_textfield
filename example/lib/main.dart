@@ -71,11 +71,11 @@ class _TestPageState extends State<TestPage> {
                   height: 20,
                 ),
                 DropDownTextField(
-                  // initialValue: "name4",
                   controller: _cnt,
                   clearOption: true,
                   enableSearch: true,
-                  clearIconProperty: IconProperty(color: Colors.green),
+                  clip: Clip.none,
+                  clearIconProperty: const IconProperty(color: Colors.green),
                   searchDecoration: const InputDecoration(
                       hintText: "enter your custom hint text here"),
                   validator: (value) {
@@ -86,24 +86,29 @@ class _TestPageState extends State<TestPage> {
                     }
                   },
                   dropDownItemCount: 6,
-
                   dropDownList: const [
-                    DropDownValueModel(name: 'name1', value: "value1"),
                     DropDownValueModel(
-                        name: 'name2',
+                      title: 'name1',
+                      subTitle: 'sub1',
+                      value: "value1",
+                    ),
+                    DropDownValueModel(
+                        title: 'name2',
+                        subTitle: 'sub2',
                         value: "value2",
                         toolTipMsg:
                             "DropDownButton is a widget that we can use to select one unique value from a set of values"),
-                    DropDownValueModel(name: 'name3', value: "value3"),
+                    DropDownValueModel(title: 'name3', value: "value3"),
                     DropDownValueModel(
-                        name: 'name4',
+                        title: 'name4',
+                        subTitle: 'sub4',
                         value: "value4",
                         toolTipMsg:
                             "DropDownButton is a widget that we can use to select one unique value from a set of values"),
-                    DropDownValueModel(name: 'name5', value: "value5"),
-                    DropDownValueModel(name: 'name6', value: "value6"),
-                    DropDownValueModel(name: 'name7', value: "value7"),
-                    DropDownValueModel(name: 'name8', value: "value8"),
+                    DropDownValueModel(title: 'name5', value: "value5"),
+                    DropDownValueModel(title: 'name6', value: "value6"),
+                    DropDownValueModel(title: 'name7', value: "value7"),
+                    DropDownValueModel(title: 'name8', value: "value8"),
                   ],
                   onChanged: (val) {},
                 ),
@@ -127,22 +132,22 @@ class _TestPageState extends State<TestPage> {
                   enableSearch: true,
                   searchKeyboardType: TextInputType.number,
                   dropDownList: const [
-                    DropDownValueModel(name: 'name1', value: "value1"),
+                    DropDownValueModel(title: 'name1', value: "value1"),
                     DropDownValueModel(
-                        name: 'name2',
+                        title: 'name2',
                         value: "value2",
                         toolTipMsg:
                             "DropDownButton is a widget that we can use to select one unique value from a set of values"),
-                    DropDownValueModel(name: 'name3', value: "value3"),
+                    DropDownValueModel(title: 'name3', value: "value3"),
                     DropDownValueModel(
-                        name: 'name4',
+                        title: 'name4',
                         value: "value4",
                         toolTipMsg:
                             "DropDownButton is a widget that we can use to select one unique value from a set of values"),
-                    DropDownValueModel(name: 'name5', value: "value5"),
-                    DropDownValueModel(name: 'name6', value: "value6"),
-                    DropDownValueModel(name: 'name7', value: "value7"),
-                    DropDownValueModel(name: 'name8', value: "value8"),
+                    DropDownValueModel(title: 'name5', value: "value5"),
+                    DropDownValueModel(title: 'name6', value: "value6"),
+                    DropDownValueModel(title: 'name7', value: "value7"),
+                    DropDownValueModel(title: 'name8', value: "value8"),
                   ],
                   onChanged: (val) {},
                 ),
@@ -160,22 +165,22 @@ class _TestPageState extends State<TestPage> {
                   // controller: _cntMulti,
                   initialValue: const ["name1", "name2", "name8", "name3"],
                   dropDownList: const [
-                    DropDownValueModel(name: 'name1', value: "value1"),
+                    DropDownValueModel(title: 'name1', value: "value1"),
                     DropDownValueModel(
-                        name: 'name2',
+                        title: 'name2',
                         value: "value2",
                         toolTipMsg:
                             "DropDownButton is a widget that we can use to select one unique value from a set of values"),
-                    DropDownValueModel(name: 'name3', value: "value3"),
+                    DropDownValueModel(title: 'name3', value: "value3"),
                     DropDownValueModel(
-                        name: 'name4',
+                        title: 'name4',
                         value: "value4",
                         toolTipMsg:
                             "DropDownButton is a widget that we can use to select one unique value from a set of values"),
-                    DropDownValueModel(name: 'name5', value: "value5"),
-                    DropDownValueModel(name: 'name6', value: "value6"),
-                    DropDownValueModel(name: 'name7', value: "value7"),
-                    DropDownValueModel(name: 'name8', value: "value8"),
+                    DropDownValueModel(title: 'name5', value: "value5"),
+                    DropDownValueModel(title: 'name6', value: "value6"),
+                    DropDownValueModel(title: 'name7', value: "value7"),
+                    DropDownValueModel(title: 'name8', value: "value8"),
                   ],
                   onChanged: (val) {
                     setState(() {});
@@ -204,16 +209,16 @@ class _TestPageState extends State<TestPage> {
                     }
                   },
                   dropDownList: const [
-                    DropDownValueModel(name: 'name1', value: "value1"),
-                    DropDownValueModel(name: 'name2', value: "value2"),
-                    DropDownValueModel(name: 'name3', value: "value3"),
-                    DropDownValueModel(name: 'name4', value: "value4"),
-                    DropDownValueModel(name: 'name5', value: "value5"),
-                    DropDownValueModel(name: 'name6', value: "value6"),
-                    DropDownValueModel(name: 'name7', value: "value7"),
-                    DropDownValueModel(name: 'name8', value: "value8"),
+                    DropDownValueModel(title: 'name1', value: "value1"),
+                    DropDownValueModel(title: 'name2', value: "value2"),
+                    DropDownValueModel(title: 'name3', value: "value3"),
+                    DropDownValueModel(title: 'name4', value: "value4"),
+                    DropDownValueModel(title: 'name5', value: "value5"),
+                    DropDownValueModel(title: 'name6', value: "value6"),
+                    DropDownValueModel(title: 'name7', value: "value7"),
+                    DropDownValueModel(title: 'name8', value: "value8"),
                   ],
-                  listTextStyle: const TextStyle(color: Colors.red),
+                  listTitleTextStyle: const TextStyle(color: Colors.red),
                   dropDownItemCount: 8,
 
                   onChanged: (val) {},
@@ -295,7 +300,7 @@ class _TestPage2State extends State<TestPage2> {
                     clearOption: true,
                     keyboardType: TextInputType.number,
                     autovalidateMode: AutovalidateMode.always,
-                    clearIconProperty: IconProperty(color: Colors.green),
+                    clearIconProperty: const IconProperty(color: Colors.green),
                     searchDecoration: const InputDecoration(
                         hintText: "enter your custom hint text here"),
                     validator: (value) {
@@ -308,22 +313,22 @@ class _TestPage2State extends State<TestPage2> {
                     dropDownItemCount: 6,
 
                     dropDownList: const [
-                      DropDownValueModel(name: 'name1', value: "value1"),
+                      DropDownValueModel(title: 'name1', value: "value1"),
                       DropDownValueModel(
-                          name: 'name2',
+                          title: 'name2',
                           value: "value2",
                           toolTipMsg:
                               "DropDownButton is a widget that we can use to select one unique value from a set of values"),
-                      DropDownValueModel(name: 'name3', value: "value3"),
+                      DropDownValueModel(title: 'name3', value: "value3"),
                       DropDownValueModel(
-                          name: 'name4',
+                          title: 'name4',
                           value: "value4",
                           toolTipMsg:
                               "DropDownButton is a widget that we can use to select one unique value from a set of values"),
-                      DropDownValueModel(name: 'name5', value: "value5"),
-                      DropDownValueModel(name: 'name6', value: "value6"),
-                      DropDownValueModel(name: 'name7', value: "value7"),
-                      DropDownValueModel(name: 'name8', value: "value8"),
+                      DropDownValueModel(title: 'name5', value: "value5"),
+                      DropDownValueModel(title: 'name6', value: "value6"),
+                      DropDownValueModel(title: 'name7', value: "value7"),
+                      DropDownValueModel(title: 'name8', value: "value8"),
                     ],
                     onChanged: (val) {},
                   ),
